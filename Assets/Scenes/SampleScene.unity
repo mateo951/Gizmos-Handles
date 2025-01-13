@@ -513,10 +513,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6659287114bc94941826ec11505138d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolPoints:
+  _points:
   - {x: 0, y: 0, z: 0}
   - {x: 1.118, y: 0.024000002, z: 0}
   - {x: 0.83199996, y: -0.736, z: 0}
+  _speed: 2
+  _isLooping: 1
+  _willPause: 0
+  _pauseTime: 0
 --- !u!1 &2101832985
 GameObject:
   m_ObjectHideFlags: 0
