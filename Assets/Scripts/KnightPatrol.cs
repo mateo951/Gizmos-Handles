@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+// ReSharper disable InconsistentNaming
 
 public class KnightPatrol : MonoBehaviour
 {
@@ -48,7 +50,7 @@ public class KnightPatrol : MonoBehaviour
         if (_willPause)
             StartCoroutine(PauseRoutine());
     
-        CalaculateNextPoint();
+        CalculateNextPoint();
     }
     
     private void CalculateMovement()
@@ -57,7 +59,7 @@ public class KnightPatrol : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, _points[_currentIndex], _speed * Time.deltaTime);
     }
     
-    private void CalaculateNextPoint()
+    private void CalculateNextPoint()
     {
         // Handle movement behavior based on the current looping/reversing state.
         if (_isLooping) // If looping is enabled, wrap around to the first waypoint when reaching the end.
@@ -79,12 +81,28 @@ public class KnightPatrol : MonoBehaviour
             _currentIndex = _points.Length - 2; // Move to the second-to-last waypoint.
         }
     }
-    
-    IEnumerator PauseRoutine()
+
+    private IEnumerator PauseRoutine()
     {
         _isPaused = true;
         yield return _pauseTimer;
         _isPaused = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        for (var i = 0; i < _points.Length; i++)
+        {
+            if (i < _points.Length - 1)
+            {
+                Gizmos.DrawLine(_points[i], _points[i+1]); 
+            }
+            else
+            {
+                Gizmos.DrawLine(_points[^1], _points[0]); 
+            }
+        }
     }
 }
 
