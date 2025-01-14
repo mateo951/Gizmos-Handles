@@ -25,6 +25,8 @@ public class KnightPatrol : MonoBehaviour
     [SerializeField]
     private float _pauseTime;
     private WaitForSeconds _pauseTimer;
+
+
     #endregion
     
     private void Start()
