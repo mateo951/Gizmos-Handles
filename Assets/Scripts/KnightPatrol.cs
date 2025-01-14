@@ -9,24 +9,27 @@ public class KnightPatrol : MonoBehaviour
      [Header("WayPoints")]
      [SerializeField]
      private Vector3[] _points = new Vector3[] { Vector3.zero };
-    
-    [Header("Platform Behavior")]
-    [SerializeField]
-    private float _speed = 2f;
-    private int _currentIndex = 0;
-    [SerializeField]
-    private bool _isLooping = true;
-    private bool _isReversing = false;
-    
-    [Header("WayPoint Pausing")]
-    [SerializeField]
-    private bool _willPause = false;
-    private bool _isPaused = false;
-    [SerializeField]
-    private float _pauseTime;
-    private WaitForSeconds _pauseTimer;
+     public Vector3[] Points
+     {
+         get { return _points; }
+         set { _points = value; }
+     }
 
-
+     [Header("Platform Behavior")]
+     [SerializeField]
+     private float _speed = 2f;
+     private int _currentIndex = 0;
+     [SerializeField]
+     private bool _isLooping = true;
+     private bool _isReversing = false;
+     
+     [Header("WayPoint Pausing")]
+     [SerializeField]
+     private bool _willPause = false;
+     private bool _isPaused = false;
+     [SerializeField]
+     private float _pauseTime;
+     private WaitForSeconds _pauseTimer;
     #endregion
     
     private void Start()
